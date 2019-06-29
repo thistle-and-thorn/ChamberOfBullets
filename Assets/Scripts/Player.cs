@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	[SerializeField] private float speed = 10f;
+	float speed = 10f;
 
 	private Vector3 GetTranslationVector() {
-		float zDelta = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-		float xDelta = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-		return new Vector3(xDelta, 0, zDelta);
+        Vector3 moveDirectionForward = transform.forward * Input.GetAxis("Vertical");
+        Vector3 moveDirectionRight = transform.right * Input.GetAxis("Horizontal");
+		return (moveDirectionForward + moveDirectionRight).normalized * speed * Time.deltaTime;
 	}
 
 	void Start () {
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
             Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             Cursor.visible = Cursor.lockState == CursorLockMode.None;
         }
-		transform.Translate(GetTranslationVector());
-	}
+        var cc = GetComponent<CharacterController>();
+        cc.Move(GetTranslationVector());
+    }
 }
