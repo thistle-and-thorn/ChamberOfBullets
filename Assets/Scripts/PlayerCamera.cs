@@ -6,6 +6,7 @@ public class PlayerCamera : MonoBehaviour {
 
 	private Vector2 mouseLook;
 	private Vector2 smoothV;
+    public float mouseClampDegree = 75f;
 	public float sensitivity = 5.0f;
 	public float smoothing = 2.0f;
 
@@ -26,6 +27,11 @@ public class PlayerCamera : MonoBehaviour {
 		    smoothV.x = Mathf.Lerp(smoothV.x, md.x, 1f / smoothing);
 		    smoothV.y = Mathf.Lerp(smoothV.y, md.y, 1f / smoothing);
 		    mouseLook += smoothV;
+
+            if (Mathf.Abs(mouseLook.y) >= mouseClampDegree)
+            {
+                mouseLook.y = mouseClampDegree * Mathf.Sign(mouseLook.y);
+            }
 
 		    transform.localRotation = Quaternion.AngleAxis(-mouseLook.y, Vector3.right);
 		    character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
