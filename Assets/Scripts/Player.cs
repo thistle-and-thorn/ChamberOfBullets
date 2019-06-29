@@ -1,11 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	Camera playerCamera;
 	[SerializeField] private float speed = 10f;
 
 	private Vector3 GetTranslationVector() {
@@ -17,7 +15,6 @@ public class Player : MonoBehaviour {
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-		playerCamera = transform.Find("PlayerCamera").GetComponent<Camera>();
 	}
 	
 	// Update is called once per frame
