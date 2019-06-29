@@ -34,3 +34,9 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Mac OSX
+*.DS_Store
+
+# VS Config
+.vscode/
