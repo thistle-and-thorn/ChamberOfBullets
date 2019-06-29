@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	// KEY INTERACTIONS
-	private List<KeyCode> FORWARD = new List<KeyCode>() { 
-		KeyCode.W, KeyCode.UpArrow 
-	};
-	private List<KeyCode> BACK = new List<KeyCode>() { 
-		KeyCode.S, KeyCode.DownArrow 
-	};
-	private List<KeyCode> STRAFE_LEFT = new List<KeyCode>() { 
-		KeyCode.A, KeyCode.LeftArrow 
-	};
-	private List<KeyCode> STRAFE_RIGHT = new List<KeyCode>() { 
-		KeyCode.D, KeyCode.RightArrow 
-	};
+	[SerializeField] private float speed = 10f;
 
-	// Use this for initialization
+	private Vector3 GetTranslationVector() {
+		float zDelta = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+		float xDelta = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+		return new Vector3(xDelta, 0, zDelta);
+	}
+
 	void Start () {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -31,5 +24,6 @@ public class Player : MonoBehaviour {
             Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
             Cursor.visible = Cursor.lockState == CursorLockMode.None;
         }
+		transform.Translate(GetTranslationVector());
 	}
 }
