@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 507286798}
   - component: {fileID: 507286797}
   - component: {fileID: 507286799}
+  - component: {fileID: 507286800}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -174,6 +175,17 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &507286800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 507286796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fead75d4c47794fdbb162bf584c598bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &546258522
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 546258523}
   - component: {fileID: 546258524}
+  - component: {fileID: 546258525}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -239,6 +252,19 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &546258525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 546258522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2baa0d835f9d43c3ac5e096b25a7dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 5
+  smoothing: 2
 --- !u!1001 &1007696404
 Prefab:
   m_ObjectHideFlags: 0
