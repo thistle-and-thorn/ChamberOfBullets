@@ -15,10 +15,18 @@ public class PlayerCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		character = this.transform.parent.gameObject;
-	}
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Cursor.lockState = Cursor.lockState == CursorLockMode.None ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = Cursor.lockState == CursorLockMode.None;
+        }
+
         // only activate camera movement if locked on window
         if (Cursor.lockState == CursorLockMode.Locked)
         {
