@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour {
 
+	private LineRenderer lineR;
 	private GameObject player;
 	private float speed = 1f;
 
@@ -11,10 +12,14 @@ public class Turret : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find("Player");
 		transform.LookAt(player.transform);
+		lineR = GetComponent<LineRenderer>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.LookAt(Vector3.Scale(player.transform.position, new Vector3(1, 0, 1)));
+		var playerPosition = Vector3.Scale(player.transform.position, new Vector3(1, 0, 1));
+		transform.LookAt(playerPosition);
+		lineR.SetPosition(0, transform.position + new Vector3(0, 0.6f,0));
+		lineR.SetPosition(1, player.transform.position - new Vector3(0, 0.6f, 0));
 	}
 }
