@@ -6,7 +6,7 @@ public class Baddy : MonoBehaviour
 {
     static readonly string ANIM_IS_WALKING = "IsWalking";
     GameObject player;
-    public float speed = 0.5f;
+    public float speed = 5f;
     bool shouldMoveTowardPlayer = true;
     Animator anim;
 
